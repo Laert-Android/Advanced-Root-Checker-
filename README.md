@@ -14,4 +14,4 @@ Licensed under GPL-3.0.
 
 ![Main Screen](Screenshots/main_screen.png)
 
-![Results](screenshot/results_clean.png)
+![Results](Screenshot/results_clean.png)
