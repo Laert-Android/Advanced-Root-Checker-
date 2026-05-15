@@ -9,3 +9,9 @@ test-keys builds, and more.
 
 Built with pure Java, no external libraries.
 Licensed under GPL-3.0.
+
+## Screenshots
+
+![Main Screen](Screenshots/main_screen.png)
+
+![Results](screenshot/results_clean.png results_clean1.png)
