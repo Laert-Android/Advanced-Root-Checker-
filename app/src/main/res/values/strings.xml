@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Root Checker</string>
+    <string name="scan_button">Scan for Root</string>
+    <string name="no_root">No root detected</string>
+    <string name="root_detected">Root detected!</string>
+</resources>
