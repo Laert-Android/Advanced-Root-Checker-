@@ -21,7 +21,7 @@ Description: |-
   * Compatible with Android 5.0+
 
 RepoType: git
-Repo: https://github.com/yourusername/AdvancedRootChecker
+Repo: https://github.com/Laert-Android/Advanced-Root-Checker
 
 Builds:
   - versionName: '1.0'
