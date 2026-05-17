@@ -19,32 +19,68 @@ Licensed under GPL-3.0.
 ## Build from Source
 
 ### Requirements
-- Java 17
-- Android SDK (API 34)
-- Gradle
+- Android device with Termux installed (from F-Droid)
+- Or a PC with Java 17 and Android SDK
 
-### Steps
+### Build on Android with Termux (recommended)
 
-1. Clone the repository
-   git clone https://github.com/Laert-Android/Advanced-Root-Checker
-   cd Advanced-Root-Checker
+**Step 1 — Install dependencies:**
+pkg update && pkg upgrade -y
+pkg install openjdk-17 git aapt2 -y
 
-2. Set your Android SDK path
-   echo "sdk.dir=/path/to/your/android-sdk" > local.properties
+**Step 2 — Set Java path:**
+export JAVA_HOME=$PREFIX/lib/jvm/java-17-openjdk
+export PATH=$PATH:$JAVA_HOME/bin
 
-3. Build the APK
-   gradle wrapper
-   ./gradlew assembleDebug
+**Step 3 — Clone the project:**
+git clone https://github.com/Laert-Android/Advanced-Root-Checker-
+cd Advanced-Root-Checker-
 
-4. The APK will be at
-   app/build/outputs/apk/debug/app-debug.apk
+**Step 4 — Install Android SDK:**
+pkg install wget unzip -y
+wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
+unzip commandlinetools-linux-11076708_latest.zip
+mkdir -p ~/android-sdk/cmdline-tools/latest
+mv cmdline-tools/* ~/android-sdk/cmdline-tools/latest/
+export ANDROID_HOME=~/android-sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+yes | sdkmanager --licenses
+sdkmanager "platforms;android-34" "build-tools;34.0.0"
 
-### On Termux (Android)
-   pkg install openjdk-17
-   pkg install aapt2
-   git clone https://github.com/Laert-Android/Advanced-Root-Checker
-   cd Advanced-Root-Checker
-   gradle wrapper
-   echo "sdk.dir=$HOME/android-sdk" > local.properties
-   echo "android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2" > gradle.properties
-   ./gradlew assembleDebug
+**Step 5 — Configure and build:**
+gradle wrapper
+echo "sdk.dir=$HOME/android-sdk" > local.properties
+echo "android.aapt2FromMavenOverride=/data/data/com.termux/files/usr/bin/aapt2" > gradle.properties
+./gradlew assembleDebug
+
+**Step 6 — Sign the APK:**
+keytool -genkey -noprompt \
+  -keystore ~/my.keystore \
+  -alias mykey \
+  -keyalg RSA \
+  -keysize 2048 \
+  -validity 10000 \
+  -storepass android123 \
+  -keypass android123 \
+  -dname "CN=Dev,OU=Dev,O=Dev,L=City,ST=State,C=US"
+
+cp app/build/outputs/apk/debug/app-debug.apk /sdcard/Download/RootChecker.apk
+
+apksigner sign \
+  --ks ~/my.keystore \
+  --ks-pass pass:android123 \
+  --key-pass pass:android123 \
+  /sdcard/Download/RootChecker.apk
+
+**Step 7 — Install:**
+Open your file manager, go to Downloads
+and tap RootChecker.apk to install.
+
+### Build on PC
+
+git clone https://github.com/Laert-Android/Advanced-Root-Checker-
+cd Advanced-Root-Checker-
+echo "sdk.dir=/path/to/your/android-sdk" > local.properties
+gradle wrapper
+./gradlew assembleDebug
+# APK at: app/build/outputs/apk/debug/app-debug.apk
