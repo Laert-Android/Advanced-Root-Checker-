@@ -41,8 +41,7 @@ pkg install wget unzip -y
 wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
 unzip commandlinetools-linux-11076708_latest.zip
 mkdir -p ~/android-sdk/cmdline-tools/latest
-mv cmdline-tools/* ~/android-sdk/cmdline-tools/latest/
-export ANDROID_HOME=~/android-sdk
+mv cmdline-tools/*/android-sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 yes | sdkmanager --licenses
 sdkmanager "platforms;android-34" "build-tools;34.0.0"
