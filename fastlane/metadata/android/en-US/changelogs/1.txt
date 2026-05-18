@@ -1,1 +1,1 @@
-
+Initial release of Advanced Root Checker.
