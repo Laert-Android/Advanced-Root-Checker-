@@ -1,1 +1,5 @@
-
+Version 2.0 - Complete Material You redesign.
+New dark teal theme, rounded cards with PASS/FAIL
+pills, animated summary card, progress bar with
+percentage counter and smooth fade-in animations.
+App name fixed to Advanced Root Checker.
