@@ -1,3 +1,7 @@
+## Latest Version: 2.0
+Material You redesign with dark teal theme,
+rounded cards and smooth animations.
+
 Advanced Root Checker is a free, open-source Android app that 
 detects root indicators on your device. All 15 checks run 
 entirely offline — no internet connection required, no data 
