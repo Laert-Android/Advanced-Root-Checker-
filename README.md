@@ -18,7 +18,7 @@ Licensed under GPL-3.0.
 
 ![Main Screen](Screenshots/main_screen.png)
 
-![Results](Screenshots/results_clean.png)
+![Results](Screenshots/results_clean.png?v=2)
 
 ## Build from Source
 
